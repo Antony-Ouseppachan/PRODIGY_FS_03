@@ -45,7 +45,7 @@ app.set("views", path.join(__dirname, "views"));
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Antony@1010",
+  password: "YOUR_PASSWORD",
   database: "slickit_db"
 });
 
