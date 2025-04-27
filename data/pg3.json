@@ -1,0 +1,43 @@
+[
+    {
+      "id": 31,
+      "name": "Dove Cream Bathing Soap",
+      "price": 99,
+      "date": "2024-06-01",
+      "image": "../media/c1.png",
+      "description": "Quantity: 100g\nExpiry: 24 months from packaging\nDetails: A moisturizing bathing soap that leaves your skin soft, smooth, and nourished."
+    },
+    {
+      "id": 32,
+      "name": "Fiama Radiant Glow Soap",
+      "price": 119,
+      "date": "2024-06-05",
+      "image": "../media/c2.png",
+      "description": "Quantity: 120g\nExpiry: 24 months from packaging\nDetails: Brighten your skin with this luxurious soap infused with skin conditioners and exotic fragrances."
+    },
+    {
+      "id": 33,
+      "name": "Head and Shoulders 2-in-1 Shampoo",
+      "price": 325,
+      "date": "2024-06-10",
+      "image": "../media/c3.png",
+      "description": "Quantity: 250ml\nExpiry: 36 months from packaging\nDetails: Combines shampoo and conditioner to nourish hair while fighting dandruff effectively."
+    },
+    {
+      "id": 34,
+      "name": "LOreal Paris Conditioner",
+      "price": 199,
+      "date": "2024-06-15",
+      "image": "../media/c4.png",
+      "description": "Quantity: 180ml\nExpiry: 24 months from packaging\nDetails: Deeply conditions and strengthens hair, providing smoothness and shine."
+    },
+    {
+      "id": 35,
+      "name": "Parachute Advansed Hair Oil",
+      "price": 125,
+      "date": "2024-06-20",
+      "image": "../media/c5.png",
+      "description": "Quantity: 250ml\nExpiry: 24 months from packaging\nDetails: Nourishes hair from within, making it strong and healthy with the goodness of coconut oil."
+    }
+  ]
+  

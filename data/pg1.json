@@ -1,0 +1,42 @@
+[
+  {
+    "id": 11,
+    "name": "Aashirvaad Atta",
+    "price": 325,
+    "date": "2024-01-15",
+    "image": "../media/a1.png",
+    "description": "Quantity: 5 kg\nExpiry: 6 months from packaging\nDetails: Made from the finest wheat grains, ensuring soft, fluffy rotis every time."
+  },
+  {
+    "id": 12,
+    "name": "Fortune Sunflower Oil",
+    "price": 775,
+    "date": "2024-02-10",
+    "image": "../media/a2.png",
+    "description": "Quantity: 5 L\nExpiry: 9 months from packaging\nDetails: Light and healthy sunflower oil, ideal for cooking and deep-frying. Offers a neutral taste with a high smoke point."
+  },
+  {
+    "id": 13,
+    "name": "Daawat Basmati Rice",
+    "price": 375,
+    "date": "2024-03-05",
+    "image": "../media/a3.png",
+    "description": "Quantity: 5 kg\nExpiry: 24 months from packaging\nDetails: Premium aged Basmati rice with long grains and a rich aroma — perfect for biryanis and special dishes."
+  },
+  {
+    "id": 14,
+    "name": "Tata Sampann Toor Dal",
+    "price": 120,
+    "date": "2024-04-20",
+    "image": "../media/a4.png",
+    "description": "Quantity: 1 kg\nExpiry: 12 months from packaging\nDetails: Unpolished toor dal packed with protein, delivering natural taste and nutrition for everyday meals."
+  },
+  {
+    "id": 15,
+    "name": "Fortune Wheat Flour",
+    "price": 50,
+    "date": "2024-05-25",
+    "image": "../media/a5.png",
+    "description": "Quantity: 1 kg\nExpiry: 4 months from packaging\nDetails: Made from 100% whole wheat. Produces soft rotis and is rich in dietary fiber and nutrients."
+  }
+]

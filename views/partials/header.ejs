@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: linear-gradient(to right, #f4e9ff, #faf4ff);
+        padding: 15px 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        z-index: 1000;
+      }
+
+      .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .logo-section {
+        margin-left: 30px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .logo-section img {
+        max-width: 90px;
+      }
+
+      .dropdown select {
+  width: 140%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><polygon points="0,0 20,0 10,10" fill="%23333"/></svg>'); /* Custom arrow */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  margin-left: 20px;
+}
+
+.dropdown select:focus {
+  outline: none;
+  border-color: #7e22ce;
+  box-shadow: 0 0 5px rgba(126, 34, 206, 0.5);
+}
+
+.dropdown select option {
+  padding: 10px;
+}
+
+      .search-bar {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        margin: 0 30px;
+      }
+
+      .search-bar input {
+        width: 100%;
+        max-width: 600px;
+        padding: 10px 20px 10px 40px;
+        border-radius: 12px;
+        border: 1px solid #ddd;
+        font-size: 16px;
+        outline: none;
+        background-color: white;
+        background-image: url("https://cdn-icons-png.flaticon.com/512/622/622669.png");
+        background-repeat: no-repeat;
+        background-position: 12px center;
+        background-size: 20px;
+      }
+
+      .nav-buttons {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .nav-buttons a {
+        text-decoration: none;
+      }
+
+      .headerbutton {
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        padding: 8px 18px;
+        color: #000000;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .headerbutton:hover {
+        background-color: #7e22ce;
+        color: white;
+      }
+
+      .icon-section {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+      }
+
+      .icon-section a {
+        text-decoration: none;
+        color: #111;
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.2s ease;
+      }
+
+      .icon-section a:hover {
+        transform: scale(1.05);
+      }
+
+      .icon-section i {
+        font-size: 20px;
+        margin-bottom: 3px;
+      }
+
+      @media (max-width: 768px) {
+        .header-container {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .search-bar {
+          margin: 15px 0;
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="logo-section">
+          <a href="/">
+            <img src="media/logo.png" alt="Logo" />
+          </a>
+
+          <div class="dropdown">
+              <select>
+                <option value="" disabled selected>Location</option>
+                <option value="S G Palya">S G Palya</option>
+                <option value="M G Road">M G Road</option>
+                <option value="Madiwala">Madiwala</option>
+                <option value="Jayanagar">Jayanagar</option>
+                <option value="J P Nagar">J P Nagar</option>
+              </select>
+              </div>    
+        </div>
+
+        <form class="search-bar" action="/search" method="GET">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search for 'Fortune'" name="q" required>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        <div class="icon-section">
+          <a href="/login">
+            <i class="fa fa-user"></i>
+            Login
+          </a>
+          <a href="/cart">
+            <i class="fa fa-shopping-cart"></i>
+            Cart
+          </a>
+          <a href="/aboutus" aria-label="About Us">
+            <i class="fa fa-info-circle"></i>
+            About
+          </a>
+        </div>
+      </div>
+    </header>
+  </body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+
+<%- include("partials/header") %>
+
+<div class="container mt-5 d-flex justify-content-center">
+  <div class="card shadow-lg rounded-4 p-4" style="width: 40rem;">
+      <h2 class="text-center text-success mb-4">Sign Up</h2>
+
+      <% if (locals.success_msg) { %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <%= locals.success_msg %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% } %>
+
+      <% if (locals.error_msg) { %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= locals.error_msg %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% } %>
+
+      <form action="/signup" method="POST" id="signupForm">
+        <div class="mb-3">
+            <label for="phno" class="form-label">Phone Number:</label>
+            <div class="input-group">
+                <span class="input-group-text bg-light">
+                    <i class="fa fa-phone"></i>
+                </span>
+                <input type="number" class="form-control" id="phno" name="phno" placeholder="Enter your phone number" required>
+            </div>
+            <small id="phnoError" class="text-danger" style="display: none;"></small>
+        </div>
+    
+        <div class="mb-3">
+            <label for="password" class="form-label">Enter New Password:</label>
+            <div class="input-group">
+                <span class="input-group-text bg-light">
+                    <i class="fa fa-lock"></i>
+                </span>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <small id="passwordError" class="text-danger" style="display: none;"></small>
+        </div>
+    
+        <div class="mb-3">
+            <label for="repassword" class="form-label">Re-Enter Password:</label>
+            <div class="input-group">
+                <span class="input-group-text bg-light">
+                    <i class="fa fa-lock"></i>
+                </span>
+                <input type="password" class="form-control" id="repassword" name="repassword" placeholder="Re-enter your password" required>
+            </div>
+            <small id="repasswordError" class="text-danger" style="display: none;"></small>
+        </div>
+    
+        <div class="text-center">
+            <button type="submit" class="btn btn-success btn-lg w-100">Sign Up</button>
+        </div>
+      </form>        
+  </div>
+</div>
+
+<%- include("partials/footer") %>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script>
+$(document).ready(function () {
+    $('#phnoError').hide();
+    $('#passwordError').hide();
+    $('#repasswordError').hide();
+
+    $('#phno').on('input', function() {
+        const phno = $(this).val();
+        const phonePattern = /^[0-9]{10}$/;
+        
+        if (!phonePattern.test(phno)) {
+            $('#phnoError').text('Please enter a valid 10-digit phone number.').show();
+        } else {
+            $('#phnoError').hide();
+        }
+    });
+
+    $('#password').on('input', function() {
+        const password = $(this).val();
+        
+        if (password.length < 6) {
+            $('#passwordError').text('Password must be at least 6 characters long.').show();
+        } else {
+            $('#passwordError').hide();
+        }
+    });
+
+    $('#repassword').on('input', function() {
+        const password = $('#password').val();
+        const repassword = $(this).val();
+        
+        if (repassword !== password) {
+            $('#repasswordError').text('Passwords do not match.').show();
+        } else {
+            $('#repasswordError').hide();
+        }
+    });
+
+    $('#signupForm').on('submit', function(event) {
+        const phoneValid = /^[0-9]{10}$/.test($('#phno').val());
+        const passwordValid = $('#password').val().length >= 6;
+        const passwordsMatch = $('#password').val() === $('#repassword').val();
+
+        if (!phoneValid || !passwordValid || !passwordsMatch) {
+            event.preventDefault(); 
+            alert('Please fix the errors before submitting.');
+        }
+    });
+});
+</script>
+
+</body>
+</html>

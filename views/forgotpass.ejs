@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Slick.it</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="/styles.css" media="all" />
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+  <style>
+    body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+    display: flex;      
+    flex-direction: column;
+    justify-content: center;  
+    align-items: center;
+        }
+
+        .login-container {
+        width: 350px;
+        padding: 30px 25px;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        animation: fadeIn 1s ease-in-out;
+        margin-top: 50px;
+    }
+
+    @keyframes fadeIn {
+        0% { opacity: 0; transform: translateY(-20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .login-header h2 {
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #7b2ff7;
+    }
+
+    .login-form input[type="text"], 
+    .login-form input[type="password"] {
+        width: 100%;
+        padding: 12px 15px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background: #f9f9f9;
+        font-size: 16px;
+    }
+
+    .submitbutton {
+        width: 100%;
+        padding: 12px;
+        margin-top: 15px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #7b2ff7, #f107a3);
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .login-form button:hover {
+        background: linear-gradient(135deg, #f107a3, #7b2ff7);
+    }
+
+    .login-footer {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #555;
+    }
+
+    .login-footer a {
+        color: #7b2ff7;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .login-footer a:hover {
+        color: #f107a3;
+    }
+  </style>
+</head>
+
+<body id="b">
+
+  <%- include("partials/header") %>
+
+  <div class="login-container">
+    <div class="login-header">
+      <h2>Reset Password</h2>
+      
+    </div>
+    <form class="login-form" method="GET" action="/forgotpass">
+      <input type="text" placeholder="Enter Registered Phone Number" name="phno" id="phno" required />
+      <input class="submitbutton" type="submit" name="submit" value="Send OTP" />
+    </form>
+    <div class="login-footer">
+      
+      <a href="/login">Back to Login</a>
+  </div>
+    <% if (typeof message !== 'undefined') { %>
+        <p style="background-color:<%= messageColor %>; text-align:center;color: white;padding: 15px 20px;border-radius: 5px;transition: opacity 0.5s ease;z-index: 1000;transform: translateX(-50%);left: 50%;position: fixed;"><%= message %></p> 
+      <% } %>
+  </div>
+  
+  <%- include("partials/footer") %>
+
+  <script src="/script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

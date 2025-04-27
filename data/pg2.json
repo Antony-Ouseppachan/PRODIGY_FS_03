@@ -1,0 +1,43 @@
+[
+    {
+      "id": 21,
+      "name": "Bru Instant Coffee",
+      "price": 249,
+      "date": "2024-01-10",
+      "image": "../media/b1.png",
+      "description": "Quantity: 500g\nExpiry: 12 months from packaging\nDetails: Rich and aromatic instant coffee for a refreshing cup anytime."
+    },
+    {
+      "id": 22,
+      "name": "Nescafe Classic Instant Coffee",
+      "price": 920,
+      "date": "2024-01-15",
+      "image": "../media/b2.png",
+      "description": "Quantity: 500g\nExpiry: 12 months from packaging\nDetails: Signature Nescafe flavor with a strong, bold taste for coffee lovers."
+    },
+    {
+      "id": 23,
+      "name": "Kellogs Corn Flakes",
+      "price": 180,
+      "date": "2024-02-01",
+      "image": "../media/b3.png",
+      "description": "Quantity: 200g\nExpiry: 9 months from packaging\nDetails: Crunchy and healthy breakfast cereal fortified with essential vitamins and minerals."
+    },
+    {
+      "id": 24,
+      "name": "Treat Chocolate Wafers",
+      "price": 45,
+      "date": "2024-03-05",
+      "image": "../media/b4.png",
+      "description": "Quantity: 1 pack\nExpiry: 6 months from packaging\nDetails: Delicious chocolate wafers with a creamy filling — perfect for snacking."
+    },
+    {
+      "id": 25,
+      "name": "Kurkure Combo Pack",
+      "price": 50,
+      "date": "2024-03-20",
+      "image": "../media/b5.png",
+      "description": "Quantity: Pack of 3\nExpiry: 5 months from packaging\nDetails: Crunchy and spicy snacks combo pack to satisfy your munch cravings."
+    }
+  ]
+  

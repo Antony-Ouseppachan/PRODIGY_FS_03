@@ -1,0 +1,43 @@
+[
+    {
+      "id": 51,
+      "name": "Portronics 22.5 W Charger",
+      "price": 249,
+      "date": "2025-01-10",
+      "image": "../media/e1.png",
+      "description": "Type: Wall Charger\nOutput: 22.5 Watts\nDetails: Fast charging support with compact and lightweight design, suitable for all devices."
+    },
+    {
+      "id": 52,
+      "name": "Portronics 22.5W 20000mAh Power Bank",
+      "price": 1449,
+      "date": "2025-01-12",
+      "image": "../media/e2.png",
+      "description": "Capacity: 20000mAh\nOutput: 22.5 Watts\nDetails: High-capacity power bank with fast charging, dual USB outputs, and compact form factor."
+    },
+    {
+      "id": 53,
+      "name": "Ailkin Type C to Type C Cable",
+      "price": 220,
+      "date": "2025-01-15",
+      "image": "../media/e3.png",
+      "description": "Length: 1 meter\nType: USB-C to USB-C\nDetails: Durable and fast charging cable, compatible with modern smartphones, tablets, and laptops."
+    },
+    {
+      "id": 54,
+      "name": "Goldmedal Twister 2 Pin Extension Reel",
+      "price": 275,
+      "date": "2025-01-18",
+      "image": "../media/e4.png",
+      "description": "Length: 5 meters\nType: 2-Pin Extension Reel\nDetails: Compact and portable extension reel ideal for home and office use, ensuring safety and convenience."
+    },
+    {
+      "id": 55,
+      "name": "Striff Type C to HDMI USB Hub (White)",
+      "price": 499,
+      "date": "2025-01-20",
+      "image": "../media/e5.png",
+      "description": "Ports: HDMI, USB 3.0, Type-C\nColor: White\nDetails: Multi-functional hub for connecting laptops to HDMI displays, USB devices, and charging simultaneously."
+    }
+  ]
+  

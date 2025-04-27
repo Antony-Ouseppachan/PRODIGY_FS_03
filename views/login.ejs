@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<title>
+Slick.it
+</title>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type ="text/css" href="styles.css" media="all"/>
+<link rel="icon" type="image/png" href="favicon.png">
+</head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+    display: flex;          
+    flex-direction: column;
+    justify-content: center;  
+    align-items: center;
+        }
+
+        .login-container {
+        width: 350px;
+        padding: 30px 25px;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        animation: fadeIn 1s ease-in-out;
+        margin-top: 50px;
+    }
+
+    @keyframes fadeIn {
+        0% { opacity: 0; transform: translateY(-20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .login-header h2 {
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #7b2ff7;
+    }
+
+    .login-form input[type="text"], 
+    .login-form input[type="password"] {
+        width: 100%;
+        padding: 12px 15px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background: #f9f9f9;
+        font-size: 16px;
+    }
+
+    .login-form button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 15px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #7b2ff7, #f107a3);
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .login-form button:hover {
+        background: linear-gradient(135deg, #f107a3, #7b2ff7);
+    }
+
+    .login-footer {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #555;
+    }
+
+    .login-footer a {
+        color: #7b2ff7;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .login-footer a:hover {
+        color: #f107a3;
+    }
+        
+    .welcome-container {
+  width: 80%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.welcome-head {
+  color: #4CAF50;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.welcome-txt {
+  font-size: 1.2em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.logout-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #f44336;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #d32f2f;
+}
+    </style>
+<%- include("partials/header") %>
+<body id="b">
+  
+  
+  <div id="overlay">
+    <canvas id="buffer"></canvas>
+  </div>
+
+  <% if (loggedIn) { %>
+     <div class="welcome-container">
+    <h1 class="welcome-head">Welcome, <%= phno %></h1>
+    <p class="welcome-txt">Current Date and Time: <%= dateTime %></p>
+    <a class="logout-btn" href="/logout">Logout</a>
+</div>
+<% } else { %>
+    <div class="login-container">
+        <div class="login-header">
+            <h2>Login</h2>
+        </div>
+
+        <% if (messages.error && messages.error.length > 0) { %>
+            <div class="flash-message" id="flash-message">
+              <%= messages.error[0] %>
+            </div>
+            <script>
+                setTimeout(function() {
+                  const flash = document.getElementById('flash-message');
+                  if (flash) {
+                    flash.style.display = 'none';
+                  }
+                }, 5000);
+              </script>
+            <% } %>
+
+        <form class="login-form" name="loginform" method="POST" action="/login">
+            <input type="text" placeholder="Phone Number" id="phno" name="phno" required><br><br>
+            <input type="password" placeholder="Password" id="password" name="password" required><br><br>
+            <button type="submit">Login</button>
+        </form>
+        <p class="login-footer"><a href="/forgotpass">Forgot Password?</a></p>
+        <p style="text-align: center;"><?php echo $message; ?></p>
+        <div class="login-footer">
+            <p>Don't have an account? <a href="/signup">Sign up</a></p>
+        </div>
+    </div>
+    <% } %>
+</body>
+
+<%- include("partials/footer") %>
+
+<script src="script.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</html>

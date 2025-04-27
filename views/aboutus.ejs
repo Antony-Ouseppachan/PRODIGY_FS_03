@@ -1,0 +1,221 @@
+<html>
+<title>Slick.it</title>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="styles.css" media="all" />
+  <link rel="icon" type="image/png" href="media/favicon.png">
+
+
+  <style>
+
+    body,
+    html {
+      height: 100%;
+    }
+
+    .parallax1 {
+      background-image: url('media/aboutus1.png');
+      height: 100%;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .parallax2 {
+      background-image: url('media/aboutus2.png');
+      height: 100%;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .parallax3 {
+      background-image: url('media/aboutus3.png');
+      height: 100%;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .gallery-item {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s;
+  }
+  
+  .gallery-item:hover img {
+    transform: scale(1.1);
+  }
+  
+  h2 {
+  font-size: 36px;
+  font-weight: 600;
+  color: #8e24aa;
+  text-align: center;
+  margin: 40px 0 20px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h2::before {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 3px;
+  background: #9c27b0;
+  margin: 15px auto;
+  border-radius: 5px;
+  transition: width 0.4s ease-out;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 2px;
+  background: #ab47bc;
+  margin: 10px auto 0;
+  border-radius: 3px;
+  transition: width 0.4s ease-out;
+}
+
+h2:hover {
+  color: #5e35b1;
+  transition: color 0.3s ease;
+}
+
+h2:hover::before,
+h2:hover::after {
+  width: 40%;
+}
+  </style>
+
+</head>
+
+<body id="b" text="black">
+  <%- include("partials/header") %>
+
+  <div id="overlay">
+    <canvas id="buffer"></canvas>
+  </div>
+  <h2>Photo Gallery</h2>
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="media/pic1.png" alt="Photo 1">
+    </div>
+    <div class="gallery-item">
+      <img src="media/pic2.png" alt="Photo 2">
+    </div>
+    <div class="gallery-item">
+      <img src="media/pic3.png" alt="Photo 3">
+    </div>
+    <div class="gallery-item">
+      <img src="media/pic4.png" alt="Photo 4">
+    </div>
+    <div class="gallery-item">
+      <img src="media/pic5.png" alt="Photo 5">
+    </div>
+    <div class="gallery-item">
+      <img src="media/pic6.png" alt="Photo 6">
+    </div>
+  </div>
+  <div class="parallax1"></div>
+  <div class="container mt-5 text-center">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+      Subscribe Now
+    </button>
+  </div>
+  <% var show_success_msg = show_success_msg || false; %>
+  <% var success_msg = success_msg || ''; %>
+  <% if (show_success_msg) { %>
+    <div class="alert alert-success" id="successAlert" role="alert" style="position: fixed; top: 20%; left: 50%; transform: translateX(-50%); z-index: 9999;">
+        <%= success_msg %>
+    </div>
+<% } %>
+  
+
+  <script>
+    window.onload = function() {
+      const successAlert = document.getElementById('successAlert');
+      if (successAlert) {
+        setTimeout(() => {
+          successAlert.style.display = 'none';
+        }, 3000);
+      }
+    };
+  </script>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Newsletter Subscription</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <form action="/subscribe" method="POST">
+            <div class="form-group">
+              <label for="email">Enter your email below to subscribe to our newsletter:</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <br><br>
+  <div class="parallax2"></div>
+</body>
+
+<%- include("partials/footer") %>
+
+<script src="script.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</html>

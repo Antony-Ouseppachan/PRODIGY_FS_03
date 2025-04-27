@@ -1,0 +1,18 @@
+<html>
+<head>
+  <title>Order Placed | Slick.it</title>
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <div class="container mt-5 text-center">
+    <h2>Order Successful!</h2>
+    <p>Your Order ID: <strong><%= orderId %></strong></p>
+    <p>Your Tracking ID: <strong><%= trackingId %></strong></p>
+
+    <a href="/" class="btn btn-primary mt-3">Back to Home</a>
+  </div>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

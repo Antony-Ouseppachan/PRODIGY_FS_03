@@ -1,0 +1,54 @@
+<link rel="stylesheet" type="text/css" href="products.css" media="all"/>
+
+<div class="cart-section mini-cart">
+  <h3>My Cart</h3>
+
+  <% if (cart.length === 0) { %>
+    <p>Your cart is empty.</p>
+  <% } else { %>
+    <ul class="cart-items">
+      <% cart.forEach(item => { %>
+        <li class="cart-item" data-id="<%= item.id %>">
+          <img src="/media/<%= item.image %>" alt="<%= item.name %>" width="40" />
+          <span><%= item.name %> (x<%= item.qty %>) - ₹<%= item.price %></span>
+          <button class="removebutton" data-id="<%= item.id %>">Remove</button>
+        </li>
+      <% }) %>
+    </ul>
+
+    <p id="cart-total"><strong>Total:</strong> ₹<%= cartTotal %></p>
+    <a href="/cart" class="btn btn-primary btn-sm">Go to Cart</a>
+  <% } %>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function() {
+
+function refreshMiniCart() {
+    $.get('/commoncart', function(html) {
+        $('.mini-cart').html($(html).find('.mini-cart').html());
+    });
+}
+
+$(document).on('click', '.removebutton', function(e) {
+    e.preventDefault(); 
+
+    const itemId = $(this).data('id');
+
+    $.post('/remove-from-cart', { id: itemId }, function(response) {
+        if (response.success) {
+            refreshMiniCart();
+        } else {
+            alert(response.message);
+        }
+    }).fail(function() {
+        alert('Error removing item from cart. Please try again.');
+    });
+});
+
+});
+
+</script>
+<script src="script.js"></script>

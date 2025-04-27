@@ -1,0 +1,43 @@
+[
+    {
+      "id": 41,
+      "name": "Lizol Surface & Floor Cleaner",
+      "price": 276,
+      "date": "2025-01-01",
+      "image": "../media/d1.png",
+      "description": "Quantity: 500ml\nExpiry: 24 months from manufacturing\nDetails: Powerful surface cleaner that kills 99.9% of germs and leaves a pleasant fragrance."
+    },
+    {
+      "id": 42,
+      "name": "Harpic Liquid Toilet Cleaner",
+      "price": 105,
+      "date": "2025-01-01",
+      "image": "../media/d2.png",
+      "description": "Quantity: 500ml\nExpiry: 24 months from manufacturing\nDetails: Thick formula that clings to toilet bowls and fights tough stains and germs."
+    },
+    {
+      "id": 43,
+      "name": "Tide Plus Detergent",
+      "price": 60,
+      "date": "2025-01-01",
+      "image": "../media/d3.png",
+      "description": "Quantity: 500g\nExpiry: 18 months from manufacturing\nDetails: Trusted detergent that provides brilliant whiteness and fragrance for everyday laundry."
+    },
+    {
+      "id": 44,
+      "name": "Ariel Front Load Detergent Powder",
+      "price": 990,
+      "date": "2025-01-01",
+      "image": "../media/d4.png",
+      "description": "Quantity: 2kg\nExpiry: 18 months from manufacturing\nDetails: Specially designed for front load washing machines to deliver superior stain removal."
+    },
+    {
+      "id": 45,
+      "name": "Vim Lemon Dishwash Gel",
+      "price": 99,
+      "date": "2025-01-01",
+      "image": "../media/d5.png",
+      "description": "Quantity: 130ml\nExpiry: 24 months from manufacturing\nDetails: Concentrated formula that removes tough grease and leaves dishes sparkling clean."
+    }
+  ]
+  

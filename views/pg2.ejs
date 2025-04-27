@@ -1,0 +1,112 @@
+<html>
+  <title>Slick.it</title>
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="styles.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="products.css" media="all" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+  </head>
+
+  <body id="b">
+    <%- include("partials/header") %>
+
+    <div id="overlay">
+      <canvas id="buffer"></canvas>
+    </div>
+    <div id="flash-message" class="flash-message" style="display: none;"></div>
+    <h2>Food and Beverages</h2>
+
+    <div class="content-wrapper">
+      <div id="productContainer" class="product-container">
+        <% products.forEach(product => { %>
+        <div class="card">
+          <div
+            class="description mt-2"
+            id="desc-<%= product.id %>"
+            style="display: none"
+          >
+            <%= product.description %>
+          </div>
+          <img
+            src="/media/<%= product.image %>"
+            class="card-img-top"
+            alt="<%= product.name %>"
+          />
+
+          <div class="card-body">
+            <h5 class="card-title"><%= product.name %></h5>
+            <p class="card-text">Manufacture Date: <%= product.date %></p>
+            <p class="card-title">₹<%= product.price %></p>
+            <button class="btn btn-warning" onclick="addToCart('<%= product.id %>', '<%= product.name %>', '<%= product.price %>', '<%= product.image %>')">Add to Cart</button>
+            <button
+              class="btn btn-info mt-2 toggle-description"
+              data-id="<%= product.id %>"
+            >
+              Description
+            </button>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+
+      <div id="mini-cart-container">
+        <%- include('partials/commoncart', { cart: cart, cartTotal: cartTotal }) %>
+      </div>
+    </div>
+
+    <%- include("partials/footer") %>
+
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const container = document.getElementById('productContainer');
+
+        container.addEventListener('click', (e) => {
+          if (e.target.classList.contains('toggle-description')) {
+            const id = e.target.getAttribute('data-id');
+            const desc = document.getElementById(`desc-${id}`);
+            const isHidden = desc.style.display === 'none' || desc.style.display === '';
+
+            if (isHidden) {
+              $(desc).slideDown();
+              desc.classList.add('show');
+              e.target.textContent = 'Hide';
+            } else {
+              $(desc).slideUp(() => {
+                desc.classList.remove('show');
+              });
+              e.target.textContent = 'Description';
+            }
+          }
+        });
+      });
+
+      window.addEventListener('scroll', () => {
+        const shownDescriptions = document.querySelectorAll('.description.show');
+        shownDescriptions.forEach(desc => {
+          const id = desc.id.split('-')[1];
+          const toggleButton = document.querySelector(`.toggle-description[data-id="${id}"]`);
+
+          if (toggleButton) {
+            toggleButton.click();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

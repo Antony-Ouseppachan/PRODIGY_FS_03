@@ -1,0 +1,46 @@
+<html>
+<head>
+  <title>Checkout | Slick.it</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <div class="container mt-5">
+    <h2>Checkout</h2>
+
+    <h4>Your Cart</h4>
+    <ul class="list-group mb-4">
+      <% cart.forEach(item => { %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= item.name %> - ₹<%= item.price %>
+        </li>
+      <% }) %>
+      <li class="list-group-item d-flex justify-content-between align-items-center font-weight-bold">
+        Total: ₹<%= cartTotal %>
+      </li>
+    </ul>
+
+    <form id="checkoutForm" method="POST" action="/place-order">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input required type="text" class="form-control" id="name" name="name">
+      </div>
+      
+      <div class="form-group">
+        <label for="mobile">Mobile Number</label>
+        <input required type="text" class="form-control" id="mobile" name="mobile">
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address</label>
+        <textarea required class="form-control" id="address" name="address" rows="3"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-success">Place Order</button>
+    </form>
+  </div>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

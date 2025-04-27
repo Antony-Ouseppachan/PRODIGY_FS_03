@@ -1,0 +1,365 @@
+<html>
+<title>
+Slick.it
+</title>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type ="text/css" href="styles.css" media="all"/>
+<link rel="icon" type="image/png" href="media/favicon.png">
+</head>
+
+<style>
+#cart-items li {
+  background-color: #ffffff;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+}
+
+.cart-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 15px;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+}
+
+.cart-item-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.cart-item-price {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.remove-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 50px;
+}
+
+.remove-btn:hover {
+  background-color: #ff3333;
+}
+
+h2 {
+  font-size: 36px;
+  font-weight: 600;
+  color: #8e24aa;
+  text-align: center;
+  margin: 40px 0 20px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h2::before {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 3px;
+  background: #9c27b0;
+  margin: 15px auto;
+  border-radius: 5px;
+  transition: width 0.4s ease-out;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 2px;
+  background: #ab47bc;
+  margin: 10px auto 0;
+  border-radius: 3px;
+  transition: width 0.4s ease-out;
+}
+
+h2:hover {
+  color: #5e35b1;
+  transition: color 0.3s ease;
+}
+
+h2:hover::before,
+h2:hover::after {
+  width: 40%;
+}
+
+.shop-btn {
+  margin-top: 30px;
+  padding: 12px 25px;
+  background-color: #199d55;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(6, 142, 51, 0.688);
+  margin-left: 42%;
+}
+
+.shop-btn:hover {
+  background-color: #145e09;
+  transform: translateY(-2px);
+  text-decoration: none;
+  color: #fff;
+}
+
+.cart-total-wrapper {
+  text-align: left;
+  margin-top: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-left: 3%;
+  display: inline-block;
+}
+
+.cart-total-wrapper strong {
+  font-size: 1.5rem;
+  color: #4a148c;
+}
+
+#cart-total {
+  font-weight: bold;
+  color: #6a1b9a;
+}
+
+.order-now-btn {
+  margin-top: 20px;
+  padding: 14px 30px;
+  background: linear-gradient(135deg, #8e24aa, #ab47bc);
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.4s ease, transform 0.2s ease;
+  box-shadow: 0 6px 10px rgba(171, 71, 188, 0.3);
+  margin-left: 3%;
+  width: 200px;
+}
+
+.order-now-btn:hover {
+  background: linear-gradient(135deg, #6a1b9a, #8e24aa);
+  transform: translateY(-2px);
+  color: #fff;
+  text-decoration: none;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-controls button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 2px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 0 5px;
+  font-size: 1.2rem;
+}
+
+.quantity-controls button:hover {
+  background-color: #0056b3;
+}
+
+.quantity-controls button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.remove-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-left: 10px;
+  font-size: 1rem;
+
+}
+
+.remove-btn:hover {
+  background-color: #ff3333;
+}
+
+.remove-btn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+
+</style>
+
+<body id="b" text="black">
+  <%- include("partials/header") %>
+
+  <div id="overlay">
+    <canvas id="buffer"></canvas>
+  </div>
+
+  <h2>My Cart</h2>
+  
+
+  <% if (cart.length === 0) { %>
+    <p class="empty-msg">Your cart is empty.</p>
+  <% } else { %>
+    <ul id="cart-items">
+      <% cart.forEach(item => { %>
+        <li id="item-<%= item.id %>">
+          <div class="cart-item">
+            <img src="/media/<%= item.image %>" alt="<%= item.name %>" class="cart-item-image">
+            <div class="cart-item-details">
+              <span class="cart-item-name"><%= item.name %></span><br>
+              <span class="cart-item-price">₹<span class="item-price"><%= item.price %></span> x <span class="item-qty"><%= item.qty %></span> = ₹<span class="item-total"><%= item.price * item.qty %></span></span></span>
+            </div>
+            <div class="quantity-controls">
+              <button type="button" class="decrease-btn" data-id="<%= item.id %>" style="margin-left: 50px;">-</button>
+              <button type="button" class="increase-btn" data-id="<%= item.id %>">+</button>
+            </div>
+            <button type="button" class="remove-btn" data-id="<%= item.id %>">Remove</button>
+          </div>
+        </li>
+      <% }); %>
+    </ul>
+    <div class="cart-total-wrapper">
+      <p><strong>Total: ₹<span id="cart-total"><%= cart.reduce((sum, item) => sum + item.price * item.qty, 0) %></span></strong></p>
+    </div>
+    <a href="/checkout" class="order-now-btn">Order Now</a><br><br><br>
+  <% } %>
+
+  <a href="/" class="shop-btn">Coninue Shopping</a>
+
+ 
+<script>
+    function updateCartTotal(updatedTotal) {
+      const totalElement = document.getElementById('cart-total');
+      if (totalElement) {
+        totalElement.textContent = updatedTotal.toFixed(2);
+      }
+    }
+
+    function checkCartEmpty() {
+      const cartItems = document.querySelectorAll('#cart-items li');
+      const orderNowButton = document.querySelector('.order-now-btn');
+      if (cartItems.length === 0) {
+        if (orderNowButton) {
+          orderNowButton.style.display = 'none';
+        }
+      } else {
+        if (orderNowButton) {
+          orderNowButton.style.display = 'block';
+        }
+      }
+    }
+
+    document.querySelectorAll('.remove-btn').forEach(button => {
+      button.addEventListener('click', function(event) {
+        event.preventDefault(); 
+
+        const itemId = this.getAttribute('data-id');
+
+        fetch('/remove-from-cart', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ id: itemId })
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            const itemElement = document.getElementById(`item-${itemId}`);
+            if (itemElement) {
+              itemElement.remove();
+            }
+
+            updateCartTotal(data.updatedTotal);
+
+            checkCartEmpty();
+          } else {
+            alert('Error removing item from cart');
+          }
+        })
+        .catch(error => console.error('Error:', error));
+      });
+    });
+
+    document.querySelectorAll('.increase-btn, .decrease-btn').forEach(button => {
+      button.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        const itemId = this.getAttribute('data-id');
+        const action = this.classList.contains('increase-btn') ? 'increase' : 'decrease';
+
+        fetch('/update-cart', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ id: itemId, action })
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            const itemElement = document.getElementById(`item-${itemId}`);
+            const itemQtyElement = itemElement.querySelector('.item-qty');
+            const itemTotalElement = itemElement.querySelector('.item-total');
+            itemQtyElement.textContent = data.updatedItem.qty;
+            itemTotalElement.textContent = (data.updatedItem.price * data.updatedItem.qty).toFixed(2);
+
+            updateCartTotal(data.updatedTotal);
+          } else {
+            alert('Error updating item quantity');
+          }
+        })
+        .catch(error => console.error('Error:', error));
+      });
+    });
+</script>
+  
+<%- include("partials/footer") %>
+
+
+<script src="script.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
