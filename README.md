@@ -34,20 +34,41 @@ Customers can explore a wide range of products, manage their cart, and place ord
 ## 📂 Project Structure
 
 ```
-slickit/
+PRODIGY_FS_03/
+├── data/
+│   ├── pg1.json
+│   ├── pg2.json
+│   ├── pg3.json
+│   ├── pg4.json
+│   └── pg5.json
+├── node_modules/
 ├── public/
-│   ├── css/
-│   │   └── styles.css
+│   ├── media/
+│   ├── products.css
+│   ├── script.js
+│   └── styles.css
 ├── views/
 │   ├── partials/
-│   ├── pages/
-│   │   ├── home.ejs
-│   │   ├── login.ejs
-│   │   ├── cart.ejs
-│   │   └── checkout.ejs
-├── server.js
+│   │   ├── commoncart.ejs
+│   │   ├── footer.ejs
+│   │   └── header.ejs
+│   ├── aboutus.ejs
+│   ├── cart.ejs
+│   ├── checkout.ejs
+│   ├── forgotpass.ejs
+│   ├── homepage.ejs
+│   ├── login.ejs
+│   ├── order-success.ejs
+│   ├── pg1.ejs
+│   ├── pg2.ejs
+│   ├── pg3.ejs
+│   ├── pg4.ejs
+│   ├── pg5.ejs
+│   ├── search.ejs
+│   └── signup.ejs
 ├── package.json
-└── README.md
+├── package-lock.json
+└── server.js
 ```
 
 ---
